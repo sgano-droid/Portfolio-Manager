@@ -125,13 +125,13 @@ function App() {
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="eyebrow">Portfolio studio</p>
+            <p className="eyebrow">AI automation portfolio</p>
             <h1 id="hero-title">
-              I build practical web platforms, automation systems, and learning products.
+              I build AI-powered automation systems for content, marketing, and publishing.
             </h1>
             <p className="hero-text">
-              A focused collection of projects built around useful products, content workflows,
-              and real-world implementation.
+              A focused collection of workflows that turn APIs, AI tools, and owned media into
+              practical business output.
             </p>
             <a className="button" href="#work">
               View work
@@ -139,15 +139,15 @@ function App() {
           </div>
           <aside className="hero-panel" aria-label="Portfolio snapshot">
             <span className="panel-label">Current focus</span>
-            <strong>Automation systems</strong>
-            <span>AI content pipelines, LMS setup, site builds, dashboards, and publishing tools.</span>
+            <strong>AI publishing workflows</strong>
+            <span>OpenAI content pipelines, social posting automation, approval gates, and API-driven delivery.</span>
           </aside>
         </section>
 
         <section className="section work-section" id="work" aria-labelledby="work-title">
           <div className="section-heading">
-            <p className="eyebrow">Featured work</p>
-            <h2 id="work-title">Projects</h2>
+            <p className="eyebrow">Featured systems</p>
+            <h2 id="work-title">AI Automation Work</h2>
           </div>
 
           <article className="project-card project-card-featured">
@@ -224,15 +224,15 @@ function App() {
             </div>
           </article>
 
-          <article className="project-card">
+          <article className="project-card project-card-ai">
             <div className="project-content">
-              <p className="project-type">AI tooling</p>
-              <h3>AI Tooling: Facebook Page Marketing Skill</h3>
+              <p className="project-type">AI workflow skill</p>
+              <h3>AI Coding Skill: Facebook Page Marketing Automation</h3>
               <p>
-                A custom Codex skill I created to turn Facebook Page posting into a guided
-                AI-assisted workflow: draft the content, apply brand profiles, approve media,
-                dry-run the payload, then publish through the Meta Graph API only after explicit
-                confirmation.
+                A reusable AI coding assistant workflow I created for Codex and Claude Code to
+                turn Facebook Page posting into a repeatable process: draft content, apply brand
+                profiles, approve media, dry-run the payload, then publish through the Meta Graph
+                API only after explicit confirmation.
               </p>
 
               <div className="project-details">
@@ -243,7 +243,7 @@ function App() {
                   </div>
                   <div>
                     <dt>Tech</dt>
-                    <dd>Codex skills, OpenAI-assisted drafting, Python automation, Meta Graph API</dd>
+                    <dd>Codex, Claude Code, OpenAI-assisted drafting, Python automation, Meta Graph API</dd>
                   </div>
                 </dl>
                 <a
@@ -314,12 +314,12 @@ function App() {
 
           <article className="project-card">
             <div className="project-content">
-              <p className="project-type">Learning platform</p>
+              <p className="project-type">Owned media platform</p>
               <h3>AralForex</h3>
               <p>
-                A WordPress-based learning platform I built for Filipino forex beginners, using
-                TutorLMS to organize Taglish video lessons, course modules, student access, and
-                learning resources in one place.
+                The owned brand and learning platform behind these automation experiments, built
+                for Filipino forex beginners with TutorLMS lessons, student access, and published
+                content channels in one place.
               </p>
 
               <div className="project-details">
@@ -381,14 +381,17 @@ function App() {
             <h2 id="focus-title">Built for practical use</h2>
           </div>
           <p>
-            This portfolio highlights products and automations that connect practical UX, APIs,
-            publishing workflows, and business-ready implementation details.
+            This portfolio highlights AI-assisted systems that connect content generation,
+            approval steps, API integrations, and publishing workflows into practical output.
           </p>
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
           <p className="eyebrow">Contact</p>
-          <h2 id="contact-title">Contact details available on request.</h2>
+          <h2 id="contact-title">
+            Email me at{" "}
+            <a href="mailto:sallyjoygano@yahoo.com">sallyjoygano@yahoo.com</a>.
+          </h2>
         </section>
       </main>
     </>

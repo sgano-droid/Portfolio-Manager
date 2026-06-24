@@ -44,10 +44,27 @@ test("codex facebook skill project uses local media and carousel", () => {
   const app = readFileSync("src/App.jsx", "utf8");
 
   assert.match(app, /fb-image\.png/);
-  assert.match(app, /AI Tooling: Facebook Page Marketing Skill/);
+  assert.match(app, /AI Coding Skill: Facebook Page Marketing Automation/);
+  assert.match(app, /Codex and Claude Code/);
   assert.match(app, /facebookSkillSlides\.map/);
   assert.match(app, /aria-label="Previous skill media"/);
   assert.match(app, /aria-label="Next skill media"/);
+});
+
+test("portfolio positioning leads with ai automation", () => {
+  const app = readFileSync("src/App.jsx", "utf8");
+
+  assert.match(app, /AI automation portfolio/);
+  assert.match(app, /AI-powered automation systems for content, marketing, and publishing/);
+  assert.match(app, /AI Automation Work/);
+  assert.match(app, /owned brand and learning platform behind these automation experiments/);
+});
+
+test("contact section includes email link", () => {
+  const app = readFileSync("src/App.jsx", "utf8");
+
+  assert.match(app, /sallyjoygano@yahoo\.com/);
+  assert.match(app, /mailto:sallyjoygano@yahoo\.com/);
 });
 
 test("page styling includes colorful portfolio treatment", () => {
@@ -57,6 +74,9 @@ test("page styling includes colorful portfolio treatment", () => {
   assert.match(css, /--coral: #ef5d50/);
   assert.match(css, /\.carousel-frame/);
   assert.match(css, /\.hero::before/);
+  assert.match(css, /\.project-card-ai/);
+  assert.match(css, /h1\s*\{[^}]*font-size: 4\.6rem;/s);
+  assert.match(css, /\.contact-section h2\s*\{[^}]*font-size: 1\.8rem;/s);
   assert.match(css, /\.project-showcase\s*\{[^}]*align-self: center;/s);
 });
 
