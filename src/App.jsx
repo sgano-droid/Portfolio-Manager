@@ -1,6 +1,9 @@
 import { useState } from "react";
 import automatedReelsVideo from "../assets/automated-fb-reels/automated-reels.mp4";
 import facebookSkillPostImage from "../assets/codex-skill-fb-post-generator/fb-image.png";
+import highImpactNewsFbSample from "../assets/high-impact-news/fb-sample.png";
+import highImpactNewsWorkflow from "../assets/high-impact-news/n8n-workflow.png";
+import highImpactNewsTelegramSample from "../assets/high-impact-news/tg-sample.png";
 import fbPageImage from "../assets/automated-fb-reels/fb-page.png";
 import n8nWorkflowImage from "../assets/automated-fb-reels/n8n-workflow.png";
 import aralforexHome from "../assets/aralforex/aralforex-home.png";
@@ -45,6 +48,24 @@ const facebookSkillSlides = [
   },
 ];
 
+const highImpactNewsSlides = [
+  {
+    title: "Telegram news alert",
+    image: highImpactNewsTelegramSample,
+    alt: "Telegram post sample for a high impact news alert.",
+  },
+  {
+    title: "Facebook news post",
+    image: highImpactNewsFbSample,
+    alt: "Facebook post sample for a high impact news event.",
+  },
+  {
+    title: "n8n automation workflow",
+    image: highImpactNewsWorkflow,
+    alt: "n8n workflow for high impact news posting automation.",
+  },
+];
+
 const aralforexSlides = [
   {
     title: "AralForex homepage",
@@ -66,9 +87,11 @@ const aralforexSlides = [
 function App() {
   const [activeReelSlide, setActiveReelSlide] = useState(0);
   const [activeSkillSlide, setActiveSkillSlide] = useState(0);
+  const [activeHighImpactNewsSlide, setActiveHighImpactNewsSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
   const currentReelSlide = automatedReelSlides[activeReelSlide];
   const currentSkillSlide = facebookSkillSlides[activeSkillSlide];
+  const currentHighImpactNewsSlide = highImpactNewsSlides[activeHighImpactNewsSlide];
   const currentSlide = aralforexSlides[activeSlide];
 
   const showPreviousReelSlide = () => {
@@ -92,6 +115,18 @@ function App() {
   const showNextSkillSlide = () => {
     setActiveSkillSlide((current) =>
       current === facebookSkillSlides.length - 1 ? 0 : current + 1
+    );
+  };
+
+  const showPreviousHighImpactNewsSlide = () => {
+    setActiveHighImpactNewsSlide((current) =>
+      current === 0 ? highImpactNewsSlides.length - 1 : current - 1
+    );
+  };
+
+  const showNextHighImpactNewsSlide = () => {
+    setActiveHighImpactNewsSlide((current) =>
+      current === highImpactNewsSlides.length - 1 ? 0 : current + 1
     );
   };
 
@@ -306,6 +341,76 @@ function App() {
                     onClick={() => setActiveSkillSlide(index)}
                     aria-label={`Show ${slide.title}`}
                     aria-pressed={index === activeSkillSlide}
+                  />
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <article className="project-card project-card-news">
+            <div className="project-content">
+              <p className="project-type">News automation</p>
+              <h3>High Impact News Automation</h3>
+              <p>
+                An n8n workflow that tracks high impact market news, such as AUD CPI releases at
+                9:30 AM Manila time, then turns the alert into ready-to-publish updates for
+                Telegram and Facebook.
+              </p>
+
+              <div className="project-details">
+                <dl>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>Automation workflow builder and publisher</dd>
+                  </div>
+                  <div>
+                    <dt>Tech</dt>
+                    <dd>n8n, market news feeds, Telegram API, Facebook Graph API</dd>
+                  </div>
+                </dl>
+                <a
+                  className="project-link"
+                  href="https://www.facebook.com/aralforex"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Facebook page
+                </a>
+              </div>
+            </div>
+
+            <div className="project-showcase" aria-label="High impact news automation media">
+              <div className="carousel-frame">
+                <img src={currentHighImpactNewsSlide.image} alt={currentHighImpactNewsSlide.alt} />
+              </div>
+
+              <div className="carousel-controls">
+                <button
+                  type="button"
+                  onClick={showPreviousHighImpactNewsSlide}
+                  aria-label="Previous high impact news media"
+                >
+                  Prev
+                </button>
+                <p>{currentHighImpactNewsSlide.title}</p>
+                <button
+                  type="button"
+                  onClick={showNextHighImpactNewsSlide}
+                  aria-label="Next high impact news media"
+                >
+                  Next
+                </button>
+              </div>
+
+              <div className="carousel-dots" aria-label="Choose high impact news media">
+                {highImpactNewsSlides.map((slide, index) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    className={index === activeHighImpactNewsSlide ? "active" : ""}
+                    onClick={() => setActiveHighImpactNewsSlide(index)}
+                    aria-label={`Show ${slide.title}`}
+                    aria-pressed={index === activeHighImpactNewsSlide}
                   />
                 ))}
               </div>

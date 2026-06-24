@@ -51,6 +51,21 @@ test("codex facebook skill project uses local media and carousel", () => {
   assert.match(app, /aria-label="Next skill media"/);
 });
 
+test("high impact news automation project uses local media and n8n wording", () => {
+  const app = readFileSync("src/App.jsx", "utf8");
+
+  assert.match(app, /assets\/high-impact-news\/fb-sample\.png/);
+  assert.match(app, /assets\/high-impact-news\/tg-sample\.png/);
+  assert.match(app, /assets\/high-impact-news\/n8n-workflow\.png/);
+  assert.match(app, /High Impact News Automation/);
+  assert.match(app, /n8n/);
+  assert.match(app, /Telegram/);
+  assert.match(app, /Facebook/);
+  assert.match(app, /highImpactNewsSlides\.map/);
+  assert.match(app, /aria-label="Previous high impact news media"/);
+  assert.match(app, /aria-label="Next high impact news media"/);
+});
+
 test("portfolio positioning leads with ai automation", () => {
   const app = readFileSync("src/App.jsx", "utf8");
 

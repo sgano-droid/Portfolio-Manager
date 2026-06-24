@@ -285,6 +285,13 @@ h3 {
   border-color: rgba(245, 185, 66, 0.42);
 }
 
+.project-card-news {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 240, 201, 0.78) 48%, rgba(239, 93, 80, 0.12)),
+    var(--surface);
+  border-color: rgba(239, 93, 80, 0.28);
+}
+
 .project-content {
   display: flex;
   flex-direction: column;
