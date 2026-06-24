@@ -1,7 +1,49 @@
 import { useState } from "react";
+import automatedReelsVideo from "../assets/automated-fb-reels/automated-reels.mp4";
+import facebookSkillPostImage from "../assets/codex-skill-fb-post-generator/fb-image.png";
+import fbPageImage from "../assets/automated-fb-reels/fb-page.png";
+import n8nWorkflowImage from "../assets/automated-fb-reels/n8n-workflow.png";
 import aralforexHome from "../assets/aralforex/aralforex-home.png";
 import aralforexCourse from "../assets/aralforex/aralforex-course.png";
 import aralforexDashboard from "../assets/aralforex/aralforex-dashboard.png";
+
+const automatedReelSlides = [
+  {
+    title: "Sample Facebook reel",
+    type: "video",
+    media: automatedReelsVideo,
+    alt: "Sample automated Facebook reel.",
+  },
+  {
+    title: "Automation workflow",
+    type: "image",
+    media: n8nWorkflowImage,
+    alt: "Automation workflow canvas for the Facebook reel generator.",
+  },
+  {
+    title: "Published Facebook page",
+    type: "image",
+    media: fbPageImage,
+    alt: "AralForex Facebook page showing published reel content.",
+  },
+];
+
+const facebookSkillSlides = [
+  {
+    title: "Skill architecture",
+    type: "architecture",
+  },
+  {
+    title: "Reusable Codex skill",
+    type: "proof",
+  },
+  {
+    title: "Generated Facebook post",
+    type: "image",
+    media: facebookSkillPostImage,
+    alt: "Sample Facebook post generated through the Codex Facebook Page Marketing skill.",
+  },
+];
 
 const aralforexSlides = [
   {
@@ -22,8 +64,36 @@ const aralforexSlides = [
 ];
 
 function App() {
+  const [activeReelSlide, setActiveReelSlide] = useState(0);
+  const [activeSkillSlide, setActiveSkillSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
+  const currentReelSlide = automatedReelSlides[activeReelSlide];
+  const currentSkillSlide = facebookSkillSlides[activeSkillSlide];
   const currentSlide = aralforexSlides[activeSlide];
+
+  const showPreviousReelSlide = () => {
+    setActiveReelSlide((current) =>
+      current === 0 ? automatedReelSlides.length - 1 : current - 1
+    );
+  };
+
+  const showNextReelSlide = () => {
+    setActiveReelSlide((current) =>
+      current === automatedReelSlides.length - 1 ? 0 : current + 1
+    );
+  };
+
+  const showPreviousSkillSlide = () => {
+    setActiveSkillSlide((current) =>
+      current === 0 ? facebookSkillSlides.length - 1 : current - 1
+    );
+  };
+
+  const showNextSkillSlide = () => {
+    setActiveSkillSlide((current) =>
+      current === facebookSkillSlides.length - 1 ? 0 : current + 1
+    );
+  };
 
   const showPreviousSlide = () => {
     setActiveSlide((current) =>
@@ -57,11 +127,11 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Portfolio studio</p>
             <h1 id="hero-title">
-              I build practical web platforms, automation tools, and learning systems.
+              I build practical web platforms, automation systems, and learning products.
             </h1>
             <p className="hero-text">
-              A focused collection of projects built around useful products, clean workflows, and
-              real-world implementation.
+              A focused collection of projects built around useful products, content workflows,
+              and real-world implementation.
             </p>
             <a className="button" href="#work">
               View work
@@ -69,8 +139,8 @@ function App() {
           </div>
           <aside className="hero-panel" aria-label="Portfolio snapshot">
             <span className="panel-label">Current focus</span>
-            <strong>Web platforms</strong>
-            <span>LMS setup, site builds, dashboards, and automation systems.</span>
+            <strong>Automation systems</strong>
+            <span>AI content pipelines, LMS setup, site builds, dashboards, and publishing tools.</span>
           </aside>
         </section>
 
@@ -79,6 +149,168 @@ function App() {
             <p className="eyebrow">Featured work</p>
             <h2 id="work-title">Projects</h2>
           </div>
+
+          <article className="project-card project-card-featured">
+            <div className="project-content">
+              <p className="project-type">Content automation</p>
+              <h3>Automated Facebook Reel Generator</h3>
+              <p>
+                An automated workflow that gathers market news from RSS feeds, turns it into
+                short-form Facebook reel content with OpenAI chat and text-to-speech, sends text
+                post versions to Telegram and Discord, then publishes through the Facebook Graph
+                API.
+              </p>
+
+              <div className="project-details">
+                <dl>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>Workflow builder and automation owner</dd>
+                  </div>
+                  <div>
+                    <dt>Tech</dt>
+                    <dd>OpenAI API, RSS feeds, Telegram API, Discord API, Facebook Graph API</dd>
+                  </div>
+                </dl>
+                <a
+                  className="project-link"
+                  href="https://www.facebook.com/aralforex"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Facebook page
+                </a>
+              </div>
+            </div>
+
+            <div className="project-showcase" aria-label="Automated reel workflow media">
+              <div className="carousel-frame reel-carousel-frame">
+                {currentReelSlide.type === "video" ? (
+                  <video
+                    src={currentReelSlide.media}
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label={currentReelSlide.alt}
+                  />
+                ) : (
+                  <img src={currentReelSlide.media} alt={currentReelSlide.alt} />
+                )}
+              </div>
+
+              <div className="carousel-controls">
+                <button type="button" onClick={showPreviousReelSlide} aria-label="Previous reel media">
+                  Prev
+                </button>
+                <p>{currentReelSlide.title}</p>
+                <button type="button" onClick={showNextReelSlide} aria-label="Next reel media">
+                  Next
+                </button>
+              </div>
+
+              <div className="carousel-dots" aria-label="Choose reel media">
+                {automatedReelSlides.map((slide, index) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    className={index === activeReelSlide ? "active" : ""}
+                    onClick={() => setActiveReelSlide(index)}
+                    aria-label={`Show ${slide.title}`}
+                    aria-pressed={index === activeReelSlide}
+                  />
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <article className="project-card">
+            <div className="project-content">
+              <p className="project-type">AI tooling</p>
+              <h3>AI Tooling: Facebook Page Marketing Skill</h3>
+              <p>
+                A custom Codex skill I created to turn Facebook Page posting into a guided
+                AI-assisted workflow: draft the content, apply brand profiles, approve media,
+                dry-run the payload, then publish through the Meta Graph API only after explicit
+                confirmation.
+              </p>
+
+              <div className="project-details">
+                <dl>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>AI workflow designer and skill builder</dd>
+                  </div>
+                  <div>
+                    <dt>Tech</dt>
+                    <dd>Codex skills, OpenAI-assisted drafting, Python automation, Meta Graph API</dd>
+                  </div>
+                </dl>
+                <a
+                  className="project-link"
+                  href="https://www.facebook.com/aralforex"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  See page output
+                </a>
+              </div>
+            </div>
+
+            <div className="project-showcase" aria-label="Codex Facebook marketing skill media">
+              <div className="carousel-frame skill-carousel-frame">
+                {currentSkillSlide.type === "image" ? (
+                  <img src={currentSkillSlide.media} alt={currentSkillSlide.alt} />
+                ) : currentSkillSlide.type === "architecture" ? (
+                  <div className="skill-diagram" aria-label="Codex skill publishing architecture">
+                    <span>Codex</span>
+                    <span>Facebook skill</span>
+                    <span>Brand profile</span>
+                    <span>Draft and media approval</span>
+                    <span>Dry-run payload</span>
+                    <span>Graph API publish</span>
+                  </div>
+                ) : (
+                  <div className="skill-proof">
+                    <p className="skill-proof-label">Reusable skill</p>
+                    <h4>facebook-page-marketing</h4>
+                    <p>
+                      Draft, review, dry-run, and publish personalized Facebook Page feed, image,
+                      and reel posts with approval gates and secret-safe environment checks.
+                    </p>
+                    <ul>
+                      <li>Brand profile selection</li>
+                      <li>Media approval before use</li>
+                      <li>Dry-run before live posting</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div className="carousel-controls">
+                <button type="button" onClick={showPreviousSkillSlide} aria-label="Previous skill media">
+                  Prev
+                </button>
+                <p>{currentSkillSlide.title}</p>
+                <button type="button" onClick={showNextSkillSlide} aria-label="Next skill media">
+                  Next
+                </button>
+              </div>
+
+              <div className="carousel-dots" aria-label="Choose skill media">
+                {facebookSkillSlides.map((slide, index) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    className={index === activeSkillSlide ? "active" : ""}
+                    onClick={() => setActiveSkillSlide(index)}
+                    aria-label={`Show ${slide.title}`}
+                    aria-pressed={index === activeSkillSlide}
+                  />
+                ))}
+              </div>
+            </div>
+          </article>
 
           <article className="project-card">
             <div className="project-content">
@@ -149,8 +381,8 @@ function App() {
             <h2 id="focus-title">Built for practical use</h2>
           </div>
           <p>
-            This portfolio will grow as more projects are added, with emphasis on the build
-            details, tools used, and the practical problem each project solves.
+            This portfolio highlights products and automations that connect practical UX, APIs,
+            publishing workflows, and business-ready implementation details.
           </p>
         </section>
 

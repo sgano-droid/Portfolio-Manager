@@ -27,6 +27,29 @@ test("aralforex carousel imports every local screenshot", () => {
   assert.match(app, /aria-label="Next screenshot"/);
 });
 
+test("automated facebook reel project uses local media and page link", () => {
+  const app = readFileSync("src/App.jsx", "utf8");
+
+  assert.match(app, /automated-reels\.mp4/);
+  assert.match(app, /fb-page\.png/);
+  assert.match(app, /n8n-workflow\.png/);
+  assert.match(app, /Automated Facebook Reel Generator/);
+  assert.match(app, /https:\/\/www\.facebook\.com\/aralforex/);
+  assert.match(app, /automatedReelSlides\.map/);
+  assert.match(app, /aria-label="Previous reel media"/);
+  assert.match(app, /aria-label="Next reel media"/);
+});
+
+test("codex facebook skill project uses local media and carousel", () => {
+  const app = readFileSync("src/App.jsx", "utf8");
+
+  assert.match(app, /fb-image\.png/);
+  assert.match(app, /AI Tooling: Facebook Page Marketing Skill/);
+  assert.match(app, /facebookSkillSlides\.map/);
+  assert.match(app, /aria-label="Previous skill media"/);
+  assert.match(app, /aria-label="Next skill media"/);
+});
+
 test("page styling includes colorful portfolio treatment", () => {
   const css = readFileSync("src/styles.css", "utf8");
 
@@ -34,6 +57,7 @@ test("page styling includes colorful portfolio treatment", () => {
   assert.match(css, /--coral: #ef5d50/);
   assert.match(css, /\.carousel-frame/);
   assert.match(css, /\.hero::before/);
+  assert.match(css, /\.project-showcase\s*\{[^}]*align-self: center;/s);
 });
 
 test("github pages build settings stay static and local", () => {
