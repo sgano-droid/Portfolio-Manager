@@ -4,6 +4,9 @@ import facebookSkillPostImage from "../assets/codex-skill-fb-post-generator/fb-i
 import highImpactNewsFbSample from "../assets/high-impact-news/fb-sample.png";
 import highImpactNewsWorkflow from "../assets/high-impact-news/n8n-workflow.png";
 import highImpactNewsTelegramSample from "../assets/high-impact-news/tg-sample.png";
+import discordConfigDashboard from "../assets/dicord-generator/config-dashboard.png";
+import discordLoadingScreen from "../assets/dicord-generator/loading.png";
+import discordSampleChannel from "../assets/dicord-generator/sample-dc.png";
 import fbPageImage from "../assets/automated-fb-reels/fb-page.png";
 import n8nWorkflowImage from "../assets/automated-fb-reels/n8n-workflow.png";
 import aralforexHome from "../assets/aralforex/aralforex-home.png";
@@ -84,15 +87,35 @@ const aralforexSlides = [
   },
 ];
 
+const discordGeneratorSlides = [
+  {
+    title: "Configuration dashboard",
+    image: discordConfigDashboard,
+    alt: "Discord generator configuration dashboard for messages, rules, and authentication.",
+  },
+  {
+    title: "Channel generation loading state",
+    image: discordLoadingScreen,
+    alt: "Discord channel generator loading screen while creating server channels.",
+  },
+  {
+    title: "Generated Discord channel",
+    image: discordSampleChannel,
+    alt: "Sample Discord server channel created by the auto generator.",
+  },
+];
+
 function App() {
   const [activeReelSlide, setActiveReelSlide] = useState(0);
   const [activeSkillSlide, setActiveSkillSlide] = useState(0);
   const [activeHighImpactNewsSlide, setActiveHighImpactNewsSlide] = useState(0);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [activeDiscordGeneratorSlide, setActiveDiscordGeneratorSlide] = useState(0);
   const currentReelSlide = automatedReelSlides[activeReelSlide];
   const currentSkillSlide = facebookSkillSlides[activeSkillSlide];
   const currentHighImpactNewsSlide = highImpactNewsSlides[activeHighImpactNewsSlide];
   const currentSlide = aralforexSlides[activeSlide];
+  const currentDiscordGeneratorSlide = discordGeneratorSlides[activeDiscordGeneratorSlide];
 
   const showPreviousReelSlide = () => {
     setActiveReelSlide((current) =>
@@ -142,6 +165,18 @@ function App() {
     );
   };
 
+  const showPreviousDiscordGeneratorSlide = () => {
+    setActiveDiscordGeneratorSlide((current) =>
+      current === 0 ? discordGeneratorSlides.length - 1 : current - 1
+    );
+  };
+
+  const showNextDiscordGeneratorSlide = () => {
+    setActiveDiscordGeneratorSlide((current) =>
+      current === discordGeneratorSlides.length - 1 ? 0 : current + 1
+    );
+  };
+
   return (
     <>
       <header className="site-header">
@@ -150,8 +185,18 @@ function App() {
             Portfolio
           </a>
           <div className="nav-links">
-            <a href="#work">Work</a>
+            <div className="nav-dropdown">
+              <a href="#work">Projects</a>
+              <div className="nav-dropdown-menu" aria-label="Project links">
+                <a href="#automated-facebook-reel-generator">Facebook Reel Generator</a>
+                <a href="#facebook-page-marketing-automation">Facebook Marketing Skill</a>
+                <a href="#high-impact-news-automation">High Impact News</a>
+                <a href="#aralforex-project">AralForex</a>
+                <a href="#discord-channel-auto-generator">Discord Channel Generator</a>
+              </div>
+            </div>
             <a href="#focus">Focus</a>
+            <a href="#tech-skills">Tech Skills</a>
             <a href="#contact">Contact</a>
           </div>
         </nav>
@@ -185,7 +230,7 @@ function App() {
             <h2 id="work-title">AI Automation Work</h2>
           </div>
 
-          <article className="project-card project-card-featured">
+          <article className="project-card project-card-featured" id="automated-facebook-reel-generator">
             <div className="project-content">
               <p className="project-type">Content automation</p>
               <h3>Automated Facebook Reel Generator</h3>
@@ -259,7 +304,7 @@ function App() {
             </div>
           </article>
 
-          <article className="project-card project-card-ai">
+          <article className="project-card project-card-ai" id="facebook-page-marketing-automation">
             <div className="project-content">
               <p className="project-type">AI workflow skill</p>
               <h3>AI Coding Skill: Facebook Page Marketing Automation</h3>
@@ -347,7 +392,7 @@ function App() {
             </div>
           </article>
 
-          <article className="project-card project-card-news">
+          <article className="project-card project-card-news" id="high-impact-news-automation">
             <div className="project-content">
               <p className="project-type">News automation</p>
               <h3>High Impact News Automation</h3>
@@ -417,7 +462,7 @@ function App() {
             </div>
           </article>
 
-          <article className="project-card">
+          <article className="project-card" id="aralforex-project">
             <div className="project-content">
               <p className="project-type">Owned media platform</p>
               <h3>AralForex</h3>
@@ -478,6 +523,68 @@ function App() {
               </div>
             </div>
           </article>
+
+          <article className="project-card" id="discord-channel-auto-generator">
+            <div className="project-content">
+              <p className="project-type">Discord automation</p>
+              <h3>Discord Channel Auto Generator</h3>
+              <p>
+                A Python FastAPI tool that connects to a Discord server, generates channels from
+                templates or from scratch, and lets admins configure automated messages, rules, and auth
+                for repeatable community setup.
+              </p>
+
+              <div className="project-details">
+                <dl>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>Backend automation builder and Discord integration owner</dd>
+                  </div>
+                  <div>
+                    <dt>Tech</dt>
+                    <dd>Python, FastAPI, Discord API</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+
+            <div className="project-showcase" aria-label="Discord channel generator media">
+              <div className="carousel-frame discord-carousel-frame">
+                <img src={currentDiscordGeneratorSlide.image} alt={currentDiscordGeneratorSlide.alt} />
+              </div>
+
+              <div className="carousel-controls">
+                <button
+                  type="button"
+                  onClick={showPreviousDiscordGeneratorSlide}
+                  aria-label="Previous Discord generator media"
+                >
+                  Prev
+                </button>
+                <p>{currentDiscordGeneratorSlide.title}</p>
+                <button
+                  type="button"
+                  onClick={showNextDiscordGeneratorSlide}
+                  aria-label="Next Discord generator media"
+                >
+                  Next
+                </button>
+              </div>
+
+              <div className="carousel-dots" aria-label="Choose Discord generator media">
+                {discordGeneratorSlides.map((slide, index) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    className={index === activeDiscordGeneratorSlide ? "active" : ""}
+                    onClick={() => setActiveDiscordGeneratorSlide(index)}
+                    aria-label={`Show ${slide.title}`}
+                    aria-pressed={index === activeDiscordGeneratorSlide}
+                  />
+                ))}
+              </div>
+            </div>
+          </article>
         </section>
 
         <section className="section split-section" id="focus" aria-labelledby="focus-title">
@@ -489,6 +596,72 @@ function App() {
             This portfolio highlights AI-assisted systems that connect content generation,
             approval steps, API integrations, and publishing workflows into practical output.
           </p>
+        </section>
+
+        <section className="section skills-section" id="tech-skills" aria-labelledby="tech-skills-title">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Capabilities</p>
+              <h2 id="tech-skills-title">Tech Skills</h2>
+            </div>
+          </div>
+
+          <div className="skills-grid">
+            <section className="skill-group" aria-labelledby="skills-ai-data">
+              <h3 id="skills-ai-data">AI / Data</h3>
+              <ul className="skill-list">
+                <li>Python</li>
+                <li>pandas</li>
+                <li>numpy</li>
+                <li>scikit-learn</li>
+                <li>Machine Learning</li>
+                <li>NLP</li>
+                <li>Text Classification</li>
+              </ul>
+            </section>
+
+            <section className="skill-group" aria-labelledby="skills-backend-deployment">
+              <h3 id="skills-backend-deployment">Backend / Deployment</h3>
+              <ul className="skill-list">
+                <li>FastAPI</li>
+                <li>Django</li>
+                <li>Docker</li>
+                <li>AWS ECR</li>
+                <li>AWS ECS</li>
+                <li>GitHub Actions</li>
+                <li>CI/CD</li>
+              </ul>
+            </section>
+
+            <section className="skill-group" aria-labelledby="skills-automation-apis">
+              <h3 id="skills-automation-apis">Automation / APIs</h3>
+              <ul className="skill-list">
+                <li>n8n</li>
+                <li>Web APIs</li>
+                <li>OpenAI API</li>
+                <li>Discord API</li>
+                <li>Telegram API</li>
+                <li>Facebook Graph API</li>
+                <li>Meta Graph API</li>
+                <li>RSS feeds</li>
+              </ul>
+            </section>
+
+            <section className="skill-group" aria-labelledby="skills-platform-workflow">
+              <h3 id="skills-platform-workflow">Platforms / Workflow</h3>
+              <ul className="skill-list">
+                <li>Appian Low-Code</li>
+                <li>Appian Associate Certification</li>
+                <li>MySQL</li>
+                <li>PostgreSQL</li>
+                <li>Agile / Scrum</li>
+                <li>WordPress</li>
+                <li>TutorLMS</li>
+                <li>Codex</li>
+                <li>Claude Code</li>
+              </ul>
+            </section>
+          </div>
         </section>
 
         <section className="contact-section" id="contact" aria-labelledby="contact-title">
